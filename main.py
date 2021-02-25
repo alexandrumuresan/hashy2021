@@ -1,5 +1,4 @@
-import read_input
-import write_output
+import io_utils
 
 def main():
     print("Hello World!")
