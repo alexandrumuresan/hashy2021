@@ -1,21 +1,33 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+
 def read_input(input_file):
     print("reading input")
     file = open(input_file, 'r')
 
     d, i, s, v, f = file.readline().rstrip("\n").rstrip("\r").split(' ')
 
-    for i in range(int(s)):
-        b, e, name, l = file.readline().rstrip("\n").rstrip("\r").split(' ')
+    DG = nx.DiGraph()
 
+    for i in range(int(s)):
+        # streets
+        b, e, name, l = file.readline().rstrip("\n").rstrip("\r").split(' ')
+        DG.add_weighted_edges_from([(int(b), int(e), int(l))])
+        DG[int(b)][int(e)]['label'] = name
+
+    nx.draw(DG, with_labels=True, font_weight='bold')
+    plt.show()
+
+    cars = []
     for i in range(int(v)):
-        car_data = file.readline().rstrip("\n").rstrip("\r").split(' ')
-        p = car_data[0]
-        streets = car_data[1:]
-        print(streets)
+        # cars
+        streets = file.readline().rstrip("\n").rstrip("\r").split(' ')[1:]
+        cars.append(streets)
 
     file.close()
 
-    return d, i, s, v, f
+    return d, i, s, v, f, DG, cars
 
 
 def write_output(output_file, content):
