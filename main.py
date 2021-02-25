@@ -1,7 +1,9 @@
-import io_utils
+from io_utils import read_input
+
 
 def main():
-    print("Hello World!")
+    d, i, s, v, f = read_input('a.txt')
+
 
 if __name__ == "__main__":
     main()
