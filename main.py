@@ -2,11 +2,11 @@ import queue
 
 from io_utils import read_input, write_output
 
-INPUT_CHAR = 'f'
+INPUT_CHAR = 'a'
 
 
 def main():
-    duration, intersection, streets, nr_cars, bonus, DG, car_routes, street_lengths = read_input(INPUT_CHAR + '.txt')
+    duration, intersection, streets, nr_cars, bonus, DG, car_routes, street_lengths, road_to_intersection = read_input(INPUT_CHAR + '.txt')
     duration = int(duration)
 
     traffic = []
@@ -52,6 +52,8 @@ def main():
 
     write_output(INPUT_CHAR + '_out.txt', traffic)
 
+def calculate_score_simple(car_routes, street_lengths, road_to_intersection)
+    
 
 def calculate_score(duration, street_traffic_lights, car_routes, bonus, street_lengths):
     score = 0

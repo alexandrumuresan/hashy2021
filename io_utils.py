@@ -8,16 +8,18 @@ def read_input(input_file):
 
     d, intersection, s, v, f = file.readline().rstrip("\n").rstrip("\r").split(' ')
 
-    DG = nx.DiGraph()
+    # DG = nx.DiGraph()
 
     street_lengths = {}
+    road_to_intersection = {}
 
     for i in range(int(s)):
         # streets
         b, e, name, l = file.readline().rstrip("\n").rstrip("\r").split(' ')
-        DG.add_weighted_edges_from([(int(b), int(e), int(l))])
-        DG[int(b)][int(e)]['label'] = name
+        # DG.add_weighted_edges_from([(int(b), int(e), int(l))])
+        # DG[int(b)][int(e)]['label'] = name
         street_lengths[name] = l
+        road_to_intersection[name] = e
 
     # nx.draw(DG, with_labels=True, font_weight='bold')
     # plt.show()
@@ -30,7 +32,7 @@ def read_input(input_file):
 
     file.close()
 
-    return d, intersection, s, v, f, DG, cars, street_lengths
+    return d, intersection, s, v, f, DG, cars, street_lengths, road_to_intersection
 
 
 def write_output(output_file, content):
